@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>       
+    <meta charset="UTF-8">        <title>Tittle</title>
+</head>
+
+<body>        
+    <script>
+        var inicio = ["unacadena", 3, 9, 1, 10, 500, 1, 10, "a", true];
+        var Enteros = new Array();
+        var aux;
+        
+        for (var i = 0; i < inicio.length; i++) {
+
+            if (typeof inicio[i] == "number") {
+                Enteros[i] = inicio[i];
+               
+            }
+        }
+        
+        for (var j = 0; j < Enteros.length - 1; j++) {
+
+            for (var k = j + 1; k < Enteros.length; k++) {
+
+                if (Enteros[j] > Enteros[k]) {
+                    aux = Enteros[j];
+                    Enteros[j] = Enteros[k];
+                    Enteros[k] = aux;
+                }
+            }
+        }
+        
+        for (var l = 0; l < Enteros.length; l++) {
+            console.log(Enteros[l]);
+        }
+    </script>
+</body>
+
+</html>
