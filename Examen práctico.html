@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tittle</title>
+</head>
+
+<body>
+    <script>
+
+        //Punto 1
+        var numero1 = 5;
+        var numero2 = 8;
+
+        if (numero1 < numero2) {
+            console.log("numero1 no es mayor que numero2");
+        }
+
+        if (numero1 >= 0) {
+            console.log("numero2 es positivo");
+        }
+
+        if (numero1 < 0) {
+            console.log("numero1 es negativo o distinto de cero");
+        }
+        if (numero1++ < numero2) {
+            console.log("Incrementar en 1 unidad el valor de numero1 no lo hace mayor o igual que numero2");
+        }
+
+
+        //Punto 2: Calcular el factorial de un número
+        let n = 1;
+        let factorial = 6;
+        while (factorial > 1) {
+            n *= factorial;
+            factorial--;
+        }
+        console.log(n);
+
+        //Punto 3
+
+        function parImpar(numero) {
+
+            if (numero % 2 == 0) {
+                console.log("El numero es par");
+            }
+            else console.log("El numero es impar");
+        }
+
+        //parImpar(4);
+
+        //Punto 4
+
+        function palindromo(texto) {
+            let may = texto.toUpperCase();
+            let array = may.split("");
+            let inverso = array.reverse();
+            return may == inverso.join("") ? "Es palindromo" : "No es palindromo"
+
+        }
+        console.log(palindromo("Oso"));
+
+        console.log("-------------------Inicio ejericicio 5-----------------");
+
+        //Punto 5
+
+        class Persona {
+            nombre;
+            edad;
+
+            constructor(nombre, edad) {
+                this.nombre = nombre;
+                this.edad = edad;
+            }
+
+            obDetalles() {
+                console.log(this.nombre);
+                console.log(this.edad);
+            }
+        }
+
+        class Estudiante extends Persona {
+            calificacion;
+
+            constructor(nombre,edad,calificacion){
+                super(nombre, edad);
+                this.calificacion = calificacion;                 
+            }     
+
+            obDetalles() {
+                return super.obDetalles() + this.calificacion;
+            }
+        }
+
+        class Profesor extends Persona {
+            asignatura;
+            nivel;
+            constructor(nombre,edad, asignatura = "JS", nivel = "básico") {
+                super(nombre,edad)
+                this.asignatura = asignatura;
+                this.nivel = nivel;
+            }
+
+            obDetalles() {
+                return super.obDetalles() + this.asignatura + this.nivel;
+            }
+        }
+
+        class Grupo  {
+            profesor;
+            promedioEst;
+            estudiantes = [];
+            constructor(profesor, estudiantes) {
+                this.profesor = profesor
+                this.estudiantes = estudiantes                 
+            }
+
+            calificar (){
+                for (let j = 0; j < this.estudiantes.length; j++) {
+                    this.estudiantes[j].calificacion =  (Math.random() * 10);
+                    console.log("Estudiante: "+ this.estudiantes[j].nombre + " Tiene una calificación de: " + this.estudiantes[j].calificacion);
+                }
+            }
+
+            promedio(){
+                let sumCalif = 0;
+                for (let i = 0; i < this.estudiantes.length  ; i++) {
+                     sumCalif = sumCalif + this.estudiantes[i].calificacion;
+                }
+                let promedio = sumCalif/this.estudiantes.length;
+                this.promedioEst = promedio;
+                console.log("El promedio de las notas es: " + this.promedioEst);
+            }
+
+            obDetalles() {
+                console.log(this.profesor);
+                console.log(this.estudiantes);
+            }
+        }
+
+        let arrayEstudiantes = [];
+        let estudiante1 = new Estudiante("Juan",18);
+        let estudiante2 = new Estudiante("Pedro",20);
+        let estudiante3 = new Estudiante("Pepito",25);
+        let estudiante4 = new Estudiante("Luis",40);
+        let estudiante5 = new Estudiante("Armando",19);
+        let estudiante6 = new Estudiante("Pablo",18);
+
+        estudiante1.obDetalles();
+
+        arrayEstudiantes.push(estudiante1,estudiante2,estudiante3,estudiante4,estudiante5,estudiante6);
+       
+        let profesor = new Profesor("Pedro",15);
+
+        let grupo = new Grupo (profesor, arrayEstudiantes);
+        console.log("---------Muestro las calificaciones--------");
+        grupo.calificar();    
+        console.log("---------Muestro el prmedio de las notas--------");
+        grupo.promedio();
+        console.log("---------Muestro el detalle del grupo--------");
+        grupo.obDetalles();   
+      
+
+    </script>
+</body>
+
+</html>
